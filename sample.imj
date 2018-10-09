@@ -1,0 +1,38 @@
+/** all the imageJ code were excerpted from
+    the book by Kota Miura
+    @author Yisong Zhen
+    @since  2018-06-22
+    @update 2018-06-22
+**/
+
+
+
+function getImageList() {
+    run('Title');
+    out = newArray(nImages);
+    for( i = 0; i < nImages; i++) {
+        selectImage(i + 1);
+        out[i] = getTitle();
+    }
+
+    return out;
+}
+
+//Code 10
+// Page 37
+macro 'Measure Ave Intensity Stack' {
+    frames = nSlices;
+    run( 'Set Measurements...', ' mean min integrated redirect = None decimal = 4');
+    run('Clear Results');
+    for(i = 0; i < frames; i++) {
+        currentslice = i + 1;
+        setSlice(currentslice);
+        run('Measure');
+    }
+}
+
+//Code 1_8
+
+macro "print_out" {
+    print('hello world!');
+}
